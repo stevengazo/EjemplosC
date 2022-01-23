@@ -8,11 +8,15 @@ using namespace std;
 
 ///Declaraci√≥n de funciones
 void arreglos();
+int sumaDatosArreglo( int numeros[], int CantidadElementos);
+void arreglosFunciones();
 
 // Funcion principal
 int main(){
-		
+	/// info general arreglos
 	arreglos();
+	// como enviar un arreglo a una funcion
+	arreglosFunciones();
 	return 0;
 }
 
@@ -55,10 +59,42 @@ void arreglos(){
 		//aqui recorremos la primera dimension del arreglo
 		printf("\n Dimension: %i ", i1 );
 		for(int j=0; j<=2; j++){
-			printf("\n--- PosiciÔøΩn: %i ", j );
+			printf("\n--- Posicion: %i ", j );
 			printf(" - Posicion general: [%i][%i]",i1,j);
 			printf(" - valor: %i ", arregloEnteros2Dim[i1][j]);
 		}
 	}
 }
 
+
+ void arreglosFunciones(){
+ 	printf("\nejecuciÛn arreglos funcionaes\n");
+	/*
+	Por default, los arrreglos en C se pasan a una funciÛn como referencia y no como valor
+	Las modificaciones realidas a un arreglo se hacen en el arreglo original y no en el pasado a la funcion	
+	*/
+	
+	///Datos pasados por referencia a la funciÛn
+	int TamanoArreglo = 5;
+	int DatosASumar[TamanoArreglo] = {1,2,3,4,5};
+	
+	// le enviamos a sumarDatosArreglo ( el arreglo que queremos sumar, el tamaÒo del arreglo);
+	// nos devuelve el resultado
+	int resultado =  sumaDatosArreglo( DatosASumar , TamanoArreglo);
+	
+	for(int i=0; i<=(TamanoArreglo -1); i++){
+		printf("\ndato a sumar: %i", DatosASumar[i] );
+	}
+	printf("\n\nLa suma de los numeros es: %i", resultado);
+}
+
+
+/// Esta funcion recibe por referencia un arreglo y suma los datos en el mismo 
+// al final retorna esa suma
+int sumaDatosArreglo( int numeros[], int CantidadElementos){
+	int tmpSum = 0;
+	for( int i= 0; i<= CantidadElementos; i++){
+		tmpSum = numeros[i] + tmpSum;
+	}	
+	return tmpSum;	
+}
