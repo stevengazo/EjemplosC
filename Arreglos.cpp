@@ -10,6 +10,7 @@ using namespace std;
 void arreglos();
 int sumaDatosArreglo( int numeros[], int CantidadElementos);
 void arreglosFunciones();
+void busquedaArreglos();
 
 // Funcion principal
 int main(){
@@ -17,11 +18,14 @@ int main(){
 	arreglos();
 	// como enviar un arreglo a una funcion
 	arreglosFunciones();
+	// Como realizar busquedas en un arreglo
+	busquedaArreglos();
 	return 0;
 }
 
 
 void arreglos(){
+	printf("\n -----------------------------------------")	;
 	printf("\n\n\nFuncion de arreglos\n");
 	/*
 		Los arreglos en C podemos verlo como una agrupaciï¿½n de datos de cierto tipo, por ejemplo:
@@ -68,6 +72,7 @@ void arreglos(){
 
 
  void arreglosFunciones(){
+ 	printf("\n -----------------------------------------")	;
  	printf("\nejecución arreglos funcionaes\n");
 	/*
 	Por default, los arrreglos en C se pasan a una función como referencia y no como valor
@@ -98,3 +103,51 @@ int sumaDatosArreglo( int numeros[], int CantidadElementos){
 	}	
 	return tmpSum;	
 }
+
+
+void busquedaArreglos(){
+	printf("\n -----------------------------------------")	;
+	printf("\nBusqueda en Arreglos ");
+	
+	/*
+		Para buscar en un arreglo, hay que tener en cuenta el tipo de dato de posee el arreglo,
+		para este ejemplo basta con un arreglo de enteros	
+	*/
+	
+	
+	//Declaración de arreglo
+	int sizeArray= 10;
+	int EjemploArreglo[]= {1,5,45,45,84,845,126,5,6,8,9};
+	
+	// vamos a preguntar el numero a buscar,
+	printf("\nDigite un numero a buscar: ");
+	int NumberToSearch= 0;
+	scanf("%d", &NumberToSearch);
+	printf("\nEl numero es: %i", NumberToSearch);
+	// vamor a recorrer el arreglo, buscando el num, si lo encontramo le avisamos al usuario, sino no al final le decimos que no lo encontramos
+	bool EstaEncontrado = false;
+	for(int i=0;i<= (sizeArray-1); i++){
+		/// si el num en en la posicio´n del array es igual al digitado entonces lo encontramos
+		if( EjemploArreglo[i]== NumberToSearch){
+			EstaEncontrado = true;
+			printf("\nEl numero en la posicion \"%i\" es: %i",i,EjemploArreglo[i]);
+		}
+		else{
+			
+		}			
+	}
+	/// si no encontrados la variable booleana es falsa por lo que imprime este mensaje
+	if(!EstaEncontrado){
+		printf("\nEl numero a buscar no esta en el arreglo");
+	}	
+
+}
+
+
+
+
+
+
+
+
+
